@@ -1,0 +1,486 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  background: linear-gradient(to top right, #87CEEB, #FFFACD);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* overflow: hidden; */
+  transition: background-color 0.3s ease;
+}
+
+/* Light and Dark Modes */
+.light-mode {
+  background: linear-gradient(to top right, #87CEEB, #FFFACD);
+}
+
+.light-mode .container{
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.552);
+  color: #000;
+}
+
+
+
+.dark-mode {
+  background: linear-gradient(to top right, #565656, #042d47);
+}
+
+.dark-mode .container {
+  background: rgba(0, 0, 0, 0.354);
+  color: #fff;
+}
+
+.dark-mode .logo, .current-weather .city-name {
+  color: #fff;
+}
+
+.light-mode .current-weather .city-name {
+  color: #000;
+}
+
+.dark-mode .weather-condition, .dark-mode .carousel-button, .dark-mode .forecast-title {
+  color: #e4e1e1;
+}
+
+
+
+
+/* Container Styling */
+.container {
+  width: 90%;
+  max-width: 800px;
+  height: 580px;
+  backdrop-filter: blur(50px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  /* position: relative; */
+  /* overflow-y: hidden; */
+}
+
+/* search box css goes here */
+.search-box {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+
+}
+
+.search-box input {
+  width: 70%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-box button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #87CEEB;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo and Theme Button Container */
+.logo-and-theme-btn {
+  width: 90%;
+  max-width: 800px;
+  /* position: absolute; */
+  /* top: 2%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-bottom: 1px solid #c7c7c7;
+  padding: 10px;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Theme Switcher Styling */
+.theme-switcher {
+  width: 1.3rem;
+  height: 1.7rem;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  border-radius: 5px;
+  text-align: center;
+  /* background-color: #c7c7c7; */
+}
+
+.theme-switcher input {
+  display: none;
+}
+
+.theme-switcher .switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.466);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 3px;
+  text-align: center;
+  padding-right: 10px;
+  border: 1px solid #c7c7c7;
+}
+
+.theme-switcher .icon {
+  position: relative;
+  margin: 0 auto;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.theme-switcher .moon {
+  right: 0.2rem;
+  opacity: 1;
+  color: #FFD700;
+}
+
+.theme-switcher .sun {
+  right: 1.3rem;
+  bottom: 0.5rem;
+  opacity: 0;
+  color: #333;
+  font-size: 25px;
+  text-align: center;
+}
+
+.theme-switcher input:checked + .switch .moon {
+  opacity: 0;
+  transform: translateX(10px);
+}
+.theme-switcher input:checked + .switch {
+  background-color: #c7c7c7;
+  backdrop-filter: blur(10px);
+}
+
+.theme-switcher input:checked + .switch .sun {
+  opacity: 1;
+  transform: translateX(30px);
+}
+
+/* Skeleton Loader Styling */
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.skeleton-loader .skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 10px;
+}
+
+.skeleton.search-box-skeleton {
+  align-self: center;
+  width: 80%;
+  height: 50px;
+}
+.skeleton.forecast-title-box {
+  width: 20%;
+  height: 50px;
+}
+
+.skeleton.weather-box {
+  width: 100%;
+  height: 130px;
+}
+
+.skeleton.forecast-box {
+  width: 100%;
+  height: 200px;
+}
+
+/* Keyframes for Skeleton Loader */
+@keyframes loading {
+  0% {
+      background-position: 200% 0;
+  }
+  100% {
+      background-position: -200% 0;
+  }
+}
+
+/* Weather Data Styling */
+.weather-data {
+  display: none;
+}
+
+.current-weather {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.city-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  align-self: flex-start;
+  margin-left: 1.2rem;
+}
+
+.weather-condition {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.temperature {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+
+
+
+/* Forecast Container and Carousel Styling */
+.forecast-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.forecast-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  margin-left: 1.2rem;
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -10rem;
+}
+
+.carousel-button {
+  background: transparent;
+  color: #33333367;
+  cursor: pointer;
+  font-size: 3rem;
+  border: none;
+  outline: none;
+  transition: color 0.3s ease;
+  background: #c7c7c72e;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-carousel {
+  margin-left: 1.2rem;
+  display: flex;
+  transition: transform 0.3s ease;
+  gap: 20px; /* Add space between forecast days */
+}
+
+.forecast-day {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  height: 200px;
+  background-color: #87cfeb95;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  /* position: relative; */
+  min-width: calc(100% - 20px);
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto; 
+}
+
+.forecast-day .overall-weather {
+  /* margin-bottom: 10px; */
+  align-self: center;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-day .day {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.forecast-day .weather-icon img {
+  width: 50px;
+  height: 50px;
+  margin: 10px 0;
+}
+
+.forecast-day .forecast-condition {
+  font-size: 1rem;
+}
+
+.forecast-day .forecast-temp {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.forecast-day .hourly-weather {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.forecast-day .hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 30%;
+  max-height: 155px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day .hour .hour-time {
+  font-size: 0.9rem;
+  color: #777;
+  /* margin-bottom: 5px; */
+}
+
+.forecast-day .hour .weather-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.forecast-day .hour .forecast-condition {
+  font-size: 0.5rem;
+  color: #555;
+}
+
+.forecast-day .hour .forecast-temp {
+  align-self: flex-end;
+  margin-top: 2px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .forecast-day {
+      flex-direction: column;
+      height: auto;
+      gap: 0px;
+  }
+
+  .forecast-day .overall-weather {
+      margin-bottom: 20px;
+  }
+
+  .forecast-day .hourly-weather {
+      gap: 5px;
+  }
+
+  .forecast-day .hour {
+      width: 45%;
+  }
+
+  .container {
+      height: 700px;
+  }
+  .carousel-buttons {
+      top: -14rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .forecast-day {
+      padding: 10px;
+      gap: 0px;
+
+  }
+
+  .forecast-day .day {
+      font-size: 1.2rem;
+  }
+
+  .forecast-day .weather-icon img {
+      width: 40px;
+      height: 40px;
+  }
+
+  .forecast-day .forecast-temp {
+      font-size: 1rem;
+  }
+
+  .forecast-day .hour {
+      width: 80px;
+      padding: 5px;
+  }
+
+  .forecast-day .hour .hour-time {
+      font-size: 0.8rem;
+  }
+
+  .forecast-day .hour .forecast-temp {
+      font-size: 0.9rem;
+  }
+
+  .container {
+      height: 700px;
+  }
+  .carousel-buttons {
+      top: -14rem;
+  }
+}
